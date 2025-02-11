@@ -19,13 +19,11 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-	reactLogo: {
-		height: 100,
-		width: 100,
-	},
 	titleContainer: {
+		padding: 20,
+		marginTop: 40,
+		justifyContent: "center",
 		alignItems: "center",
-		marginTop: 20,
 	},
 	title: {
 		fontSize: 24,

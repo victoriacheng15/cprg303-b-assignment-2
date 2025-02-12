@@ -9,7 +9,7 @@ export default function HomeScreen() {
 			<View style={styles.titleContainer}>
 				<Text style={styles.title}>
 					<HelloWave />
-					Welcome to the Login Page!
+					Welcome!
 					<HelloWave />
 				</Text>
 			</View>

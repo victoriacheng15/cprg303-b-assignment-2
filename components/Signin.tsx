@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "expo-router";
 import {
 	View,
 	Text,
@@ -6,13 +7,14 @@ import {
 	TouchableOpacity,
 	StyleSheet,
 } from "react-native";
-import creds from "@/credentials.json";
+import credentials from "@/credentials.json";
 
 export default function Signin() {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [usernameError, setUsernameError] = useState("");
 	const [passwordError, setPasswordError] = useState("");
+	const router = useRouter();
 
 	function validateUsername(username: string) {
 		return username.length >= 5;
@@ -25,17 +27,14 @@ export default function Signin() {
 	}
 
 	function handleSignIn() {
-		// Reset errors
 		setUsernameError("");
 		setPasswordError("");
 
-		// Validate username
 		if (!validateUsername(username)) {
 			setUsernameError("Username must be at least 5 characters long.");
 			return;
 		}
 
-		// Validate password
 		if (!validatePassword(password)) {
 			setPasswordError(
 				"Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.",
@@ -43,8 +42,7 @@ export default function Signin() {
 			return;
 		}
 
-		// Check credentials against credentials.json
-		const user = creds.users.find(
+		const user = credentials.users.find(
 			(user) => user.username === username && user.password === password,
 		);
 
@@ -53,8 +51,7 @@ export default function Signin() {
 			return;
 		}
 
-		// Proceed with sign-in logic (e.g., navigate to another screen)
-		console.log("Sign-in successful!");
+		router.push("../Welcome");
 	}
 
 	return (
